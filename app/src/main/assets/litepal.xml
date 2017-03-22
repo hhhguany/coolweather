@@ -4,7 +4,7 @@
 
     <list>
         <mapping class="org.udidi.coolweather.db.City"/>
-        <mapping class="org.udidi.coolweather.db.Country"/>
+        <mapping class="org.udidi.coolweather.db.County"/>
         <mapping class="org.udidi.coolweather.db.Province"/>
     </list>
 </litepal>
