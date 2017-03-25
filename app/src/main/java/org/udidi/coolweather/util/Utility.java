@@ -3,12 +3,15 @@ package org.udidi.coolweather.util;
 import android.text.TextUtils;
 import android.util.Log;
 
+import com.google.gson.Gson;
+
 import org.json.JSONArray;
 import org.json.JSONObject;
 import org.json.JSONException;
 import org.udidi.coolweather.db.City;
 import org.udidi.coolweather.db.County;
 import org.udidi.coolweather.db.Province;
+import org.udidi.coolweather.gson.Weather;
 
 import static android.content.ContentValues.TAG;
 
@@ -82,6 +85,18 @@ public class Utility {
         }
         Log.d(TAG, "handleCountyResponse: Wrong");
         return false;
+    }
+
+    public static Weather handleWeatherResponse(String response) {
+        try {
+            JSONObject jsonObject = new JSONObject(response);
+            JSONArray jsonArray = jsonObject.getJSONArray("HeWeather");
+            String weatherContent = jsonArray.getJSONObject(0).toString();
+            return new Gson().fromJson(weatherContent,Weather.class);
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        return null;
     }
 
 }
