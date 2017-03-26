@@ -24,10 +24,12 @@ import com.bumptech.glide.Glide;
 
 import org.udidi.coolweather.gson.Forecast;
 import org.udidi.coolweather.gson.Weather;
+import org.udidi.coolweather.service.AutoUpdateService;
 import org.udidi.coolweather.util.HttpUtil;
 import org.udidi.coolweather.util.Utility;
 
 import java.io.IOException;
+import java.security.AuthProvider;
 
 import okhttp3.Call;
 import okhttp3.Callback;
@@ -217,5 +219,7 @@ public class WeatherActivity extends AppCompatActivity {
         carWashText.setText(carWash);
         sportText.setText(sport);
         weatherLayout.setVisibility(View.VISIBLE);
+        Intent intent = new Intent(this, AutoUpdateService.class);
+        startService(intent);
     }
 }
